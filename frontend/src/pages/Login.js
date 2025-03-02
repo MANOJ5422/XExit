@@ -22,7 +22,7 @@ const Login = () => {
     setError(""); // Clear previous errors
 
     try {
-      const res = await axios.post(`${config.enpoint}/api/auth/login`, credentials); // Use axiosInstance
+      const res = await axios.post(`${config.endpoint}/api/auth/login`, credentials); // Use axiosInstance
       console.log(res);
       const { token } = res.data;
 

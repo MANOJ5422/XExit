@@ -32,7 +32,7 @@ const EmployeeDashboard = () => {
       }
 
       try {
-        const res = await axios.get(`${confif.endpoint}/api/user/resign`, {
+        const res = await axios.get(`${config.endpoint}/api/user/resign`, {
           headers: { Authorization: token },
         });
         setResignation(res.data.data || null);
