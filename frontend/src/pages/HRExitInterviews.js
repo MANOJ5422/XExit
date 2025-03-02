@@ -21,7 +21,7 @@ const HRExitInterviews = () => {
     const fetchResponses = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axiosInstance.get("/admin/exit_responses", {
+        const response = await axiosInstance.get("/api/admin/exit_responses", {
           headers: { Authorization: token },
         });
 

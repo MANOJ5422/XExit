@@ -30,7 +30,7 @@ const ExitInterview = () => {
     try {
       const token = localStorage.getItem("token");
       await axiosInstance.post(
-        "/user/responses",
+        "/api/user/responses",
         { responses },
         { headers: { Authorization: token } }
       );

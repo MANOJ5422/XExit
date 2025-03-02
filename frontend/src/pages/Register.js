@@ -34,7 +34,7 @@ const Register = () => {
 
     try {
       // Call the registration API
-      await axios.post(`${process.env.REACT_APP_API_BASE_URL}/auth/register`, {
+      await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/auth/register`, {
         username,
         password,
       });

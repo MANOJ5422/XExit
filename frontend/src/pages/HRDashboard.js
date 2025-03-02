@@ -20,7 +20,7 @@ const HRDashboard = () => {
   useEffect(() => {
     const fetchResignations = async () => {
       try {
-        const res = await axiosInstance.get("/admin/resignations", {
+        const res = await axiosInstance.get("/api/admin/resignations", {
           headers: { Authorization: localStorage.getItem("token") },
         });
         setResignations(res.data.data);
@@ -37,7 +37,7 @@ const HRDashboard = () => {
   const handleAction = async (resignationId, approved, lwd) => {
     try {
       await axiosInstance.put(
-        "/admin/conclude_resignation",
+        "api/admin/conclude_resignation",
         { resignationId, approved, lwd },
         { headers: { Authorization: localStorage.getItem("token") } }
       );

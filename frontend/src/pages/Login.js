@@ -21,7 +21,8 @@ const Login = () => {
     setError(""); // Clear previous errors
 
     try {
-      const res = await axiosInstance.post("/auth/login", credentials); // Use axiosInstance
+      const res = await axiosInstance.post("/api/auth/login", credentials); // Use axiosInstance
+      console.log(res);
       const { token } = res.data;
 
       // Save token in localStorage

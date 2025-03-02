@@ -30,7 +30,7 @@ const EmployeeDashboard = () => {
       }
 
       try {
-        const res = await axiosInstance.get("/user/resign", {
+        const res = await axiosInstance.get("/api/user/resign", {
           headers: { Authorization: token },
         });
         setResignation(res.data.data || null);
@@ -58,7 +58,7 @@ const EmployeeDashboard = () => {
 
     try {
       const res = await axiosInstance.post(
-        "/user/resign",
+        "/api/user/resign",
         { lwd },
         { headers: { Authorization: localStorage.getItem("token") } }
       );
