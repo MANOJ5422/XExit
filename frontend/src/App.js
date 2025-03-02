@@ -13,6 +13,12 @@ import ExitInterview from "./pages/ExitInterview";
 import HRExitInterviews from "./pages/HRExitInterviews";
 import Register from "./pages/Register";
 
+
+export const config = {
+  // endpoint: `http://${ipConfig.workspaceIp}:8082/api/v1`,
+  endpoint: `https://xexit-53d2.onrender.com`,
+};
+
 const App = () => {
   return (
     <Router>

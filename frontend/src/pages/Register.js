@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { TextField, Button, Typography, Box } from "@mui/material";
+import { config } from "../App";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ const Register = () => {
 
     try {
       // Call the registration API
-      await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/auth/register`, {
+      await axios.post(`${config.endpoint}/api/auth/register`, {
         username,
         password,
       });

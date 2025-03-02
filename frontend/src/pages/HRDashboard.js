@@ -12,6 +12,8 @@ import {
   Alert,
   Link,
 } from "@mui/material";
+import { config } from "../App";
+import axios from "axios";
 
 const HRDashboard = () => {
   const [resignations, setResignations] = useState([]);
@@ -20,7 +22,7 @@ const HRDashboard = () => {
   useEffect(() => {
     const fetchResignations = async () => {
       try {
-        const res = await axiosInstance.get("/api/admin/resignations", {
+        const res = await axios.get(`${config.endpoint}/api/admin/resignations`, {
           headers: { Authorization: localStorage.getItem("token") },
         });
         setResignations(res.data.data);
@@ -36,8 +38,8 @@ const HRDashboard = () => {
 
   const handleAction = async (resignationId, approved, lwd) => {
     try {
-      await axiosInstance.put(
-        "api/admin/conclude_resignation",
+      await axios.put(`${config.endpoint}
+        "api/admin/conclude_resignation`,
         { resignationId, approved, lwd },
         { headers: { Authorization: localStorage.getItem("token") } }
       );

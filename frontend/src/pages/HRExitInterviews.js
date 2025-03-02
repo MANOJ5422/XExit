@@ -12,6 +12,9 @@ import {
   Alert,
 } from "@mui/material";
 import axiosInstance from "../utils/axiosInstance";
+import { config } from "../App";
+import axios from "axios";
+
 
 const HRExitInterviews = () => {
   const [responses, setResponses] = useState([]);
@@ -21,7 +24,7 @@ const HRExitInterviews = () => {
     const fetchResponses = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axiosInstance.get("/api/admin/exit_responses", {
+        const response = await axios.get(`${config.endpoint}/api/admin/exit_responses`, {
           headers: { Authorization: token },
         });
 

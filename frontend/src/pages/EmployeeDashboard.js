@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axiosInstance from "../utils/axiosInstance";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {
   Box,
@@ -13,6 +14,7 @@ import {
   TableCell,
   TableBody,
 } from "@mui/material";
+import { config } from "../App";
 
 const EmployeeDashboard = () => {
   const [resignation, setResignation] = useState(null);
@@ -30,7 +32,7 @@ const EmployeeDashboard = () => {
       }
 
       try {
-        const res = await axiosInstance.get("/api/user/resign", {
+        const res = await axios.get(`${confif.endpoint}/api/user/resign`, {
           headers: { Authorization: token },
         });
         setResignation(res.data.data || null);
@@ -57,8 +59,8 @@ const EmployeeDashboard = () => {
     setSuccess("");
 
     try {
-      const res = await axiosInstance.post(
-        "/api/user/resign",
+      const res = await axios.post(`${config.endpoint}
+        /api/user/resign`,
         { lwd },
         { headers: { Authorization: localStorage.getItem("token") } }
       );

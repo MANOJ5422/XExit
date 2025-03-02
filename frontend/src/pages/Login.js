@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axiosInstance from "../utils/axiosInstance"; // Import axios instance
 import { TextField, Button, Box, Typography, Alert } from "@mui/material";
-
+import { config } from "../App";
+import axios from "axios";
 const Login = () => {
   const [credentials, setCredentials] = useState({
     username: "",
@@ -21,7 +22,7 @@ const Login = () => {
     setError(""); // Clear previous errors
 
     try {
-      const res = await axiosInstance.post("/api/auth/login", credentials); // Use axiosInstance
+      const res = await axios.post(`${config.enpoint}/api/auth/login`, credentials); // Use axiosInstance
       console.log(res);
       const { token } = res.data;
 

@@ -8,6 +8,8 @@ import {
   CardContent,
 } from "@mui/material";
 import axiosInstance from "../utils/axiosInstance";
+import { config } from "../App";
+import axios from "axios";
 
 const ExitInterview = () => {
   const [responses, setResponses] = useState([
@@ -29,8 +31,8 @@ const ExitInterview = () => {
   const handleSubmit = async () => {
     try {
       const token = localStorage.getItem("token");
-      await axiosInstance.post(
-        "/api/user/responses",
+      await axios.post(`${config.endpoint}
+        /api/user/responses`,
         { responses },
         { headers: { Authorization: token } }
       );
