@@ -15,3 +15,5 @@ const connectMongoDB = async () => {
 
 module.exports = connectMongoDB;
 
+// `mongodb+srv://tarunmathur098:XExit@123@xexit.gglsb.mongodb.net/resignation_management`
+// process.env.MONGODB_URL

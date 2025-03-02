@@ -1,33 +1,30 @@
-const cors = require('cors');
-const express = require('express');
-const employeeRouter = require('./routes/employee.route.js');
-const adminRouter = require('./routes/admin.route.js');
+require("dotenv").config();
+
+const cors = require("cors");
+const express = require("express");
+const mongoose = require("mongoose");
+
+const authRoutes = require("./routes/authRoutes");
+const adminExitInterview = require("./routes/adminExitInterview");
+const adminResignations = require("./routes/adminResignations");
+const resignationRoutes = require("./routes/resignationRoutes");
+const exitInterviewRoutes = require("./routes/exitInterviewRoutes");
 const connectMongoDB = require('./config/config.js');
-require('dotenv').config();
-
-// Initialize Express app and define the port
 const app = express();
-const PORT = process.env.PORT || 8080; 
-
+const PORT = process.env.PORT || 8080;
 // Connect to MongoDB
 connectMongoDB();
 
-const corsOptions = {
-    origin: 'http://localhost:3000', // Adjust to the URL of your frontend
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true,  // Allow cookies if required
-  };
 
-// Middleware setup
-app.use(cors(corsOptions));
-// app.use(cors());
+
+app.use(cors());
 app.use(express.json());
+app.use("/api/auth", authRoutes);
+app.use("/api/admin", adminResignations);
+app.use("/api/admin", adminExitInterview);
+app.use("/api/user", resignationRoutes);
+app.use("/api/user", exitInterviewRoutes);
 
-// Routes
-app.use('/api', employeeRouter);
-app.use('/api/admin', adminRouter);
-
-// Start the server
 app.listen(PORT, () => {
-    console.log(`Backend is listening on PORT ${PORT}`);
+  console.log(`Backend listening on Port ${PORT}!`);
 });
